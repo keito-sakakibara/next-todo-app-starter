@@ -1,0 +1,45 @@
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: FetchTasks
+  url: tasks
+  methods:
+  - GET
+  name: FetchTasks
+  comment: null
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: AddTask
+  url: tasks
+  methods:
+  - POST
+  name: AddTask
+  comment: null
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: FetchTask
+  url: tasks/:taskId
+  methods:
+  - GET
+  name: FetchTask
+  comment: null
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: UpdateTask
+  url: tasks/:taskId
+  methods:
+  - PUT
+  name: UpdateTask
+  comment: null
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: DeleteTask
+  url: tasks/:taskId
+  methods:
+  - DELETE
+  name: DeleteTask
+  comment: null
