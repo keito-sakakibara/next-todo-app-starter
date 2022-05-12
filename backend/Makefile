@@ -33,7 +33,6 @@ console:
 .PHONY: apply
 apply:
 	make migrate
-#	make seed
 	make metadata
 
 .PHONY: migrate
@@ -47,10 +46,3 @@ metadata:
 	docker-compose up -d hasura
 	until curl -s -o /dev/null http://127.0.0.1:8888/healthz; do sleep 1; done
 	hasura metadata apply --admin-secret=secret --skip-update-check
-
-.PHONY: seed
-seed:
-	docker-compose up -d hasura
-	until curl -s -o /dev/null http://127.0.0.1:8888/healthz; do sleep 1; done
-	hasura seed apply --database-name default --admin-secret=secret --skip-update-check
-	HASURA_GRAPHQL_SEEDS_DIRECTORY=hasura/seeds_local hasura seed apply --database-name default --admin-secret=secret --skip-update-check
