@@ -3,7 +3,6 @@
 - yarn
 
 ## バックエンドの開発環境セットアップ
-
 ```
 cd backend
 ```
@@ -22,7 +21,6 @@ curl --request GET \
 ```
 
 ## フロントエンドの開発環境セットアップ
-
 ```
 cd frontend
 ```
@@ -35,4 +33,14 @@ yarn
 起動後、`http://localhost:3333`にアクセスしてHello Next.jsが表示されていればOK
 ```
 yarn dev
+```
+
+## APIの仕様
+`backend/openapi.json`に記載
+
+またサーバー起動後、下記curlでOpenAPIを取得可能
+```
+curl --request GET \
+  --url http://localhost:8888/api/swagger/json \
+  --header 'x-hasura-admin-secret: secret'
 ```
