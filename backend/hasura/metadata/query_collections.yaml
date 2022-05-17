@@ -15,7 +15,7 @@
     - name: AddTask
       query: |-
         mutation AddTask($name: String!, $description: String!) {
-          insert_tasks_one(object: {name: $name, description: $description}) {
+          addTask(object: {name: $name, description: $description}) {
             id
             name
             description
@@ -26,7 +26,7 @@
     - name: FetchTask
       query: |-
         query FetchTask($taskId: Int!) {
-          tasks_by_pk(id: $taskId) {
+          task(id: $taskId) {
             id
             name
             description
@@ -37,7 +37,7 @@
     - name: UpdateTask
       query: |-
         mutation UpdateTask($taskId: Int!, $name: String!, $description: String!) {
-          update_tasks_by_pk(pk_columns: {id: $taskId}, _set: {name: $name, description: $description}) {
+          updateTask(pk_columns: {id: $taskId}, _set: {name: $name, description: $description}) {
             id
             name
             description
@@ -48,7 +48,7 @@
     - name: DeleteTask
       query: |-
         mutation DeleteTask($taskId: Int!) {
-          delete_tasks_by_pk(id: $taskId) {
+          deleteTask(id: $taskId) {
             id
           }
         }

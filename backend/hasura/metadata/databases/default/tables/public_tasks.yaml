@@ -1,3 +1,16 @@
 table:
   name: tasks
   schema: public
+configuration:
+  custom_column_names: {}
+  custom_name: task
+  custom_root_fields:
+    delete: deleteTasks
+    delete_by_pk: deleteTask
+    insert: addTasks
+    insert_one: addTask
+    select: tasks
+    select_aggregate: tasksAggregate
+    select_by_pk: task
+    update: updateTasks
+    update_by_pk: updateTask
