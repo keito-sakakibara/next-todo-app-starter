@@ -44,3 +44,5 @@ curl --request GET \
   --url http://localhost:8888/api/swagger/json \
   --header 'x-hasura-admin-secret: secret'
 ```
+
+リクエスト時には`x-hasura-admin-secret`ヘッダーに`secret`指定する必要がある
