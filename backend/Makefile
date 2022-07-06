@@ -1,7 +1,7 @@
 .PHONY: init
 init:
 	curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
-	hasura update-cli --version v2.2.1
+	sudo hasura update-cli --version v2.2.1
 	docker-compose build --no-cache
 	make apply
 
