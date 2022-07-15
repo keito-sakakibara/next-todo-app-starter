@@ -141,11 +141,17 @@ export default function App() {
                 </ListItemText>
                 <ListItemSecondaryAction>
                   <form onSubmit={updateForm.handleSubmit(updateTodo(todo.id))}>
-                    <Input type="text" {...updateForm.register("issue")}/>
-                    {/* React Hook Form の useForm() 時に定義したバリデーション失敗時のエラーメッセージ */}
-                    <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
-                      updateForm.formState.errors.issue?.message as unknown as string
-                    }</span></div>
+                    <div>
+                      <Input type="text" {...updateForm.register("name")} />
+                      <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
+                        updateForm.formState.errors.name?.message as unknown as string
+                      }</span></div>
+
+                      <TextField type="text" {...updateForm.register("description")} />
+                      <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
+                        updateForm.formState.errors.description?.message as unknown as string
+                      }</span></div>
+                    </div>
                     <Button type="submit">更新</Button>
                   </form>
                 </ListItemSecondaryAction>
