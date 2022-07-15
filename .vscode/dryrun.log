@@ -1,6 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/1112437/next-todo-app-starter'
-make: Leaving directory `/Users/1112437/next-todo-app-starter'
+make: Entering directory `/Users/1112437/next-todo-app-starter/next-todo-app-starter-1'
+make: Leaving directory `/Users/1112437/next-todo-app-starter/next-todo-app-starter-1'
  
 make: *** No targets specified and no makefile found.  Stop.
 
