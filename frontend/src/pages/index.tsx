@@ -88,7 +88,9 @@ export default function App() {
   return (
     <>
       <Container component="main" maxWidth="xs">
-        <form onSubmit={createForm.handleSubmit(handleSaveTodo)}>
+        <form onSubmit={createForm.handleSubmit(data =>{
+          handleSaveTodo(data)
+        })}>
           <Input type="text" {...createForm.register("name")} />
           {/* React Hook Form の useForm() 時に定義したバリデーション失敗時のエラーメッセージ */}
           <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
@@ -115,7 +117,7 @@ export default function App() {
               const updateForm = useForm({resolver: yupResolver(updateFormSchema)});
               const updateTodo = (args: FieldValues, id: string) => {
                 const {name, description} = args as {name: string, description: string};
-                axios.patch(`http://localhost:8888/api/rest/tasks/${id}`,
+                axios.put(`http://localhost:8888/api/rest/tasks/${id}`,
                 {
                   name,
                   description
@@ -132,16 +134,18 @@ export default function App() {
                 })
               }
               return <ListItem component="li">
-                <Checkbox
-                  value="primary"
-                  onChange={() => deleteTodo(todo.id as string)}
-                />
-                <ListItemText>
-                  Name:[{todo.name}] Description:[{todo.description}]
-                </ListItemText>
-                <ListItemSecondaryAction>
-                  <form onSubmit={updateForm.handleSubmit(updateTodo(todo.id))}>
-                    <div>
+                <Container style={{ display: "flex"}}>
+                  <Checkbox
+                    value="primary"
+                    onChange={() => deleteTodo(todo.id as string)}
+                  />
+                  <ListItemText>
+                    Name:[{todo.name}] Description:[{todo.description}]
+                  </ListItemText>
+                  <ListItemSecondaryAction style={{ display: "flex"}}>
+                    <form onSubmit={updateForm.handleSubmit(data => {
+                      updateTodo(data,todo.id);
+                    })}>
                       <Input type="text" {...updateForm.register("name")} />
                       <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
                         updateForm.formState.errors.name?.message as unknown as string
@@ -151,10 +155,10 @@ export default function App() {
                       <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
                         updateForm.formState.errors.description?.message as unknown as string
                       }</span></div>
-                    </div>
-                    <Button type="submit">更新</Button>
-                  </form>
-                </ListItemSecondaryAction>
+                      <Button type="submit">更新</Button>
+                    </form>
+                  </ListItemSecondaryAction>
+                </Container>
               </ListItem>;
             }
             return <Todo key={todo.id} />;
