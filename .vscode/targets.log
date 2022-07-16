@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Thu Jul  7 03:32:39 2022
+# Make data base, printed on Thu Jul  7 05:02:28 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/1112437/next-todo-app-starter
+CURDIR := /Users/1112437/next-todo-app-starter/next-todo-app-starter-1
 # makefile
 SHELL = /bin/sh
 # environment
@@ -43,13 +43,13 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 INFOPATH = /opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/s3/dlxhhdm514s27d0kz1x_620n4dpgp2/T/vscode-ipc-a3df1549-79e1-4a07-9a97-406bd16ae8cb.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/s3/dlxhhdm514s27d0kz1x_620n4dpgp2/T/vscode-ipc-6ff7a7ba-759a-4f8c-83b0-eee475bad519.sock
 # environment
 VSCODE_CWD = /
 # environment
 PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 # environment
-LaunchInstanceID = A11CA2D6-8B2E-4F4B-944E-60EAEB688D11
+LaunchInstanceID = D1808294-8FEE-4A99-B8EA-3F182A64883D
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -57,13 +57,13 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.YDLvyCgNPn/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.MZRNj7IJ3Z/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/1112437/next-todo-app-starter
+PWD = /Users/1112437/next-todo-app-starter/next-todo-app-starter-1
 # environment
 HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
@@ -149,7 +149,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 548
+VSCODE_PID = 546
 # variable set hash-table stats:
 # Load=68/1024=7%, Rehash=0, Collisions=1/88=1%
 
@@ -159,7 +159,7 @@ VSCODE_PID = 548
 
 # Directories
 
-# . (device 16777229, inode 1275740): 7 files, no impossibilities.
+# . (device 16777229, inode 1891873): 7 files, no impossibilities.
 
 # 7 files, no impossibilities in 1 directories.
 
@@ -233,6 +233,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Jul  7 03:32:39 2022
+# Finished Make data base on Thu Jul  7 05:02:28 2022
 
  
