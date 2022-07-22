@@ -6,21 +6,18 @@ import {
   List,
   ListItem,
   ListItemText,
-  Input,
-  ListItemSecondaryAction,
   Checkbox,
   TextField
-  } from '@material-ui/core';
-
+} from '@material-ui/core';
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string } from "yup";
+import { useRouter } from 'next/router'
 
-// 「TODOを新規作成するフォーム」のスキーマを yup で定義する。
 const createFormSchema = object().required().shape({
-  name: string().required('name is required'), // TODO名のinputタグのモデル。値は文字列であり、必須バリデーションを要する。
-  description: string().required('description is required'), // TODOの説明のinputタグのモデル。値は文字列であり、必須バリデーションを要する。
+  name: string().required('名前を入力してください').max(20, '20文字以下で入力してください'),
+  description: string().max(20, '20文字以下で入力してください')
 })
 
 export default function App() {
@@ -31,6 +28,14 @@ export default function App() {
     name: string;
     description: string;
   }[]>([]);
+
+  const router = useRouter();
+  const redirectEdit = (id:string) => {
+    router.push({
+        pathname: "/edit",
+        query: { id: id },
+    });
+};
 
   const getTodos = async () => {
     try {
@@ -66,7 +71,6 @@ export default function App() {
       );
       console.log(res.data);
       setTodos([...todos, {id, name, description}]);
-      // getTodos();
     } catch (error) {
       console.log(error);
     }
@@ -91,48 +95,30 @@ export default function App() {
         <form onSubmit={createForm.handleSubmit(data =>{
           handleSaveTodo(data)
         })}>
-          <Input type="text" {...createForm.register("name")} />
+        <Container component="div">
+          <TextField variant="outlined" label="名前" type="text" {...createForm.register("name")} />
           {/* React Hook Form の useForm() 時に定義したバリデーション失敗時のエラーメッセージ */}
           <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
             createForm.formState.errors.name?.message as unknown as string
           }</span></div>
 
-          <TextField type="text" {...createForm.register("description")} />
+          <TextField variant="outlined" label="詳細" type="text" {...createForm.register("description")} />
           {/* React Hook Form の useForm() 時に定義したバリデーション失敗時のエラーメッセージ */}
           <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
             createForm.formState.errors.description?.message as unknown as string
           }</span></div>
 
           <Button type="submit" variant="contained" color="primary">作成</Button>
+        </Container>
         </form>
         <List style={{ marginTop: "48px" }} component="ul">
           {todos.map((todo) => {
-
             // 「TODOを更新するフォーム」のスキーマを yup で定義する（ここではTODOの内容のみを編集できるフォームを作る想定でコード書いています）
             const updateFormSchema = object().required().shape({
-              name: string().required('name is required'), // TODO名のinputタグのモデル。値は文字列であり、必須バリデーションを要する。
-              description: string().required('description is required'), // TODOの説明のinputタグのモデル。値は文字列であり、必須バリデーションを要する。
+              name: string().required('名前を入力してください').max(20, '20文字以下で入力してください'),
+              description: string().max(20, '20文字以下で入力してください')
             });
             const Todo: React.FC = () => {
-              const updateForm = useForm({resolver: yupResolver(updateFormSchema)});
-              const updateTodo = (args: FieldValues, id: string) => {
-                const {name, description} = args as {name: string, description: string};
-                axios.put(`http://localhost:8888/api/rest/tasks/${id}`,
-                {
-                  name,
-                  description
-                },
-                {
-                  headers: { "x-hasura-admin-secret": "secret" }
-                })
-                .then(response => {
-                  setTodos(todos.filter(todo => todo.id !== id));
-                  getTodos();
-                  console.log("set")
-                }).catch(data =>  {
-                  console.log(data)
-                })
-              }
               return <ListItem component="li">
                 <Container style={{ display: "flex"}}>
                   <Checkbox
@@ -142,22 +128,7 @@ export default function App() {
                   <ListItemText>
                     Name:[{todo.name}] Description:[{todo.description}]
                   </ListItemText>
-                  <ListItemSecondaryAction style={{ display: "flex"}}>
-                    <form onSubmit={updateForm.handleSubmit(data => {
-                      updateTodo(data,todo.id);
-                    })}>
-                      <Input type="text" {...updateForm.register("name")} />
-                      <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
-                        updateForm.formState.errors.name?.message as unknown as string
-                      }</span></div>
-
-                      <TextField type="text" {...updateForm.register("description")} />
-                      <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
-                        updateForm.formState.errors.description?.message as unknown as string
-                      }</span></div>
-                      <Button type="submit">更新</Button>
-                    </form>
-                  </ListItemSecondaryAction>
+                  <a onClick={() => redirectEdit(todo.id)}>更新</a>
                 </Container>
               </ListItem>;
             }
