@@ -9,6 +9,7 @@ import {
   Checkbox,
   TextField
 } from '@material-ui/core';
+import { Todo } from "../components/Todo"
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -29,14 +30,6 @@ export default function App() {
     name: string;
     description: string;
   }[]>([]);
-
-  const router = useRouter();
-  const redirectEdit = (id:string) => {
-    router.push({
-        pathname: "/edit",
-        query: { id: id },
-    });
-};
 
   const getTodos = async () => {
     try {
@@ -77,26 +70,13 @@ export default function App() {
     }
   };
 
-  const deleteTodo = (id: string) => {
-    axios.delete(`http://localhost:8888/api/rest/tasks/${id}`,
-    {
-      headers: { "x-hasura-admin-secret": "secret" }
-    })
-    .then(response => {
-      setTodos(todos.filter(todo => todo.id !== id));
-      getTodos();
-      console.log("set")
-    }).catch(data =>  {
-      console.log(data)
-    })
-  }
   return (
     <>
       <Container component="main" maxWidth="sm" style={{ marginTop: "50px" ,textAlign: "center" }}>
         <form onSubmit={createForm.handleSubmit(data =>{
           handleSaveTodo(data)
         })}>
-        <Container component="div" style={{ display: "flex"}}>
+        <Container component="div">
           <TextField variant="outlined" label="名前" type="text" {...createForm.register("name")} />
           {/* React Hook Form の useForm() 時に定義したバリデーション失敗時のエラーメッセージ */}
           <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
@@ -115,21 +95,7 @@ export default function App() {
         <Container component="div" style={{ marginTop: "50px"}}>
           <List component="ul">
             {todos.map((todo) => {
-              const Todo: React.FC = () => {
-                return <ListItem component="li">
-                  <Container style={{ display: "flex"}}>
-                    <Checkbox
-                      value="primary"
-                      onChange={() => deleteTodo(todo.id as string)}
-                    />
-                    <ListItemText>
-                      Name:[{todo.name}] Description:[{todo.description}]
-                    </ListItemText>
-                    <Button onClick={() => redirectEdit(todo.id)} variant="contained" color="primary">更新</Button>
-                  </Container>
-                </ListItem>;
-              }
-              return <Todo key={todo.id} />;
+              <Todo id ={todo.id} name = {todo.name} description = {todo.description}/>;
             })}
           </List>
         </Container>
