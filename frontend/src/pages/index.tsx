@@ -14,6 +14,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string } from "yup";
 import { useRouter } from 'next/router'
+import { display, textAlign } from "@mui/system";
 
 const createFormSchema = object().required().shape({
   name: string().required('名前を入力してください').max(20, '20文字以下で入力してください'),
@@ -91,11 +92,11 @@ export default function App() {
   }
   return (
     <>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="sm" style={{ marginTop: "50px" ,textAlign: "center" }}>
         <form onSubmit={createForm.handleSubmit(data =>{
           handleSaveTodo(data)
         })}>
-        <Container component="div">
+        <Container component="div" style={{ display: "flex"}}>
           <TextField variant="outlined" label="名前" type="text" {...createForm.register("name")} />
           {/* React Hook Form の useForm() 時に定義したバリデーション失敗時のエラーメッセージ */}
           <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
@@ -107,34 +108,31 @@ export default function App() {
           <div style={{marginBottom: 10}}><span style={{color: 'red'}}>{
             createForm.formState.errors.description?.message as unknown as string
           }</span></div>
-
           <Button type="submit" variant="contained" color="primary">作成</Button>
         </Container>
+
         </form>
-        <List style={{ marginTop: "48px" }} component="ul">
-          {todos.map((todo) => {
-            // 「TODOを更新するフォーム」のスキーマを yup で定義する（ここではTODOの内容のみを編集できるフォームを作る想定でコード書いています）
-            const updateFormSchema = object().required().shape({
-              name: string().required('名前を入力してください').max(20, '20文字以下で入力してください'),
-              description: string().max(20, '20文字以下で入力してください')
-            });
-            const Todo: React.FC = () => {
-              return <ListItem component="li">
-                <Container style={{ display: "flex"}}>
-                  <Checkbox
-                    value="primary"
-                    onChange={() => deleteTodo(todo.id as string)}
-                  />
-                  <ListItemText>
-                    Name:[{todo.name}] Description:[{todo.description}]
-                  </ListItemText>
-                  <a onClick={() => redirectEdit(todo.id)}>更新</a>
-                </Container>
-              </ListItem>;
-            }
-            return <Todo key={todo.id} />;
-          })}
-        </List>
+        <Container component="div" style={{ marginTop: "50px"}}>
+          <List component="ul">
+            {todos.map((todo) => {
+              const Todo: React.FC = () => {
+                return <ListItem component="li">
+                  <Container style={{ display: "flex"}}>
+                    <Checkbox
+                      value="primary"
+                      onChange={() => deleteTodo(todo.id as string)}
+                    />
+                    <ListItemText>
+                      Name:[{todo.name}] Description:[{todo.description}]
+                    </ListItemText>
+                    <Button onClick={() => redirectEdit(todo.id)} variant="contained" color="primary">更新</Button>
+                  </Container>
+                </ListItem>;
+              }
+              return <Todo key={todo.id} />;
+            })}
+          </List>
+        </Container>
       </Container>
     </>
   );
