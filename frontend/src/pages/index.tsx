@@ -4,9 +4,6 @@ import {
   Button,
   Container,
   List,
-  ListItem,
-  ListItemText,
-  Checkbox,
   TextField
 } from '@material-ui/core';
 import { Todo } from "../components/Todo"
@@ -14,8 +11,6 @@ import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string } from "yup";
-import { useRouter } from 'next/router'
-import { display, textAlign } from "@mui/system";
 
 const createFormSchema = object().required().shape({
   name: string().required('名前を入力してください').max(20, '20文字以下で入力してください'),
@@ -47,6 +42,18 @@ export default function App() {
   useEffect(() => {
     getTodos();
   }, []);
+
+  const deleteTodo = (id: string) => {
+    axios.delete(`http://localhost:8888/api/rest/tasks/${id}`,
+    {
+      headers: { "x-hasura-admin-secret": "secret" }
+    })
+    .then(response => {
+      setTodos(todos.filter(todo => todo.id !== id));
+    }).catch(data =>  {
+      console.log(data)
+    })
+  }
 
   const handleSaveTodo = async (args: FieldValues) => {
     try {
@@ -95,7 +102,7 @@ export default function App() {
         <Container component="div" style={{ marginTop: "50px"}}>
           <List component="ul">
             {todos.map((todo) => {
-              <Todo id ={todo.id} name = {todo.name} description = {todo.description}/>;
+              return <Todo deleteTodo={deleteTodo} id ={todo.id} name = {todo.name} description = {todo.description}/>;
             })}
           </List>
         </Container>

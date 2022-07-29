@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Thu Jul  7 05:02:28 2022
+# Make data base, printed on Mon Jul 25 19:49:42 2022
 
 # Variables
 
@@ -18,11 +18,10 @@ make: *** No rule to make target `all'.  Stop.
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# environment
-VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
+ 
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
 @F = $(notdir $@)
@@ -31,37 +30,29 @@ CURDIR := /Users/1112437/next-todo-app-starter/next-todo-app-starter-1
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ja","availableLanguages":{"*":"ja"},"_languagePackId":"3cd3bd15e30fa0124a3f232cbca66525.ja","_translationsConfigFile":"/Users/1112437/Library/Application Support/Code/clp/3cd3bd15e30fa0124a3f232cbca66525.ja/tcf.json","_cacheRoot":"/Users/1112437/Library/Application Support/Code/clp/3cd3bd15e30fa0124a3f232cbca66525.ja","_resolvedLanguagePackCoreLocation":"/Users/1112437/Library/Application Support/Code/clp/3cd3bd15e30fa0124a3f232cbca66525.ja/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/Users/1112437/Library/Application Support/Code/clp/3cd3bd15e30fa0124a3f232cbca66525.ja/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ja","availableLanguages":{"*":"ja"},"_languagePackId":"29207410cd77a70b4b25e4878dda93be.ja","_translationsConfigFile":"/Users/1112437/Library/Application Support/Code/clp/29207410cd77a70b4b25e4878dda93be.ja/tcf.json","_cacheRoot":"/Users/1112437/Library/Application Support/Code/clp/29207410cd77a70b4b25e4878dda93be.ja","_resolvedLanguagePackCoreLocation":"/Users/1112437/Library/Application Support/Code/clp/29207410cd77a70b4b25e4878dda93be.ja/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/Users/1112437/Library/Application Support/Code/clp/29207410cd77a70b4b25e4878dda93be.ja/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile
 MAKEFILE_LIST := 
 # environment
-VSCODE_VERBOSE_LOGGING = true
-# environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 INFOPATH = /opt/homebrew/share/info:
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/s3/dlxhhdm514s27d0kz1x_620n4dpgp2/T/vscode-ipc-6ff7a7ba-759a-4f8c-83b0-eee475bad519.sock
 # environment
 VSCODE_CWD = /
 # environment
 PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 # environment
-LaunchInstanceID = D1808294-8FEE-4A99-B8EA-3F182A64883D
-# environment
-VSCODE_LOG_STACK = false
+LaunchInstanceID = 9D4C5A10-CE3A-43D7-9956-62D43A6F32B3
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.MZRNj7IJ3Z/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.xFbu6rv8x2/Listeners
 # automatic
 %F = $(notdir $%)
-# environment
-VSCODE_PIPE_LOGGING = true
 # environment
 PWD = /Users/1112437/next-todo-app-starter/next-todo-app-starter-1
 # environment
@@ -77,11 +68,11 @@ HOME = /Users/1112437
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/1112437/Library/Application Support/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+VSCODE_CODE_CACHE_PATH = /Users/1112437/Library/Application Support/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
 LOGNAME = 1112437
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -97,7 +88,7 @@ SHLVL = 2
 # default
 MAKE_VERSION := 3.81
 # environment
-USER = 1112437
+USER = k.sakakibara
 # makefile
 .DEFAULT_GOAL := 
 # automatic
@@ -111,7 +102,9 @@ TMPDIR = /var/folders/s3/dlxhhdm514s27d0kz1x_620n4dpgp2/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/1112437/Library/Application Support/Code/1.68.1-main.sock
+VSCODE_IPC_HOOK = /Users/1112437/Library/Application Support/Code/1.69.2-main.sock
+# environment
+MallocNanoZone = 0
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -119,7 +112,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.1008378.1008384
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.4597554.4597560
 # environment
 HOMEBREW_PREFIX = /opt/homebrew
 # automatic
@@ -139,7 +132,7 @@ MAKEFILES :=
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a5
+SECURITYSESSIONID = 18efe
 # automatic
 ^F = $(notdir $^)
 # default
@@ -149,9 +142,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 546
+VSCODE_PID = 61474
 # variable set hash-table stats:
-# Load=68/1024=7%, Rehash=0, Collisions=1/88=1%
+# Load=64/1024=6%, Rehash=0, Collisions=1/84=1%
 
 # Pattern-specific Variable Values
 
@@ -159,9 +152,9 @@ VSCODE_PID = 546
 
 # Directories
 
-# . (device 16777229, inode 1891873): 7 files, no impossibilities.
+# . (device 16777229, inode 1891873): 9 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -233,6 +226,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Jul  7 05:02:28 2022
+# Finished Make data base on Mon Jul 25 19:49:42 2022
 
  
