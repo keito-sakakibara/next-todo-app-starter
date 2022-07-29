@@ -54,6 +54,9 @@ export default function App() {
       console.log(data)
     })
   }
+  const {
+    reset,
+  } = useForm();
 
   const handleSaveTodo = async (args: FieldValues) => {
     try {
@@ -72,6 +75,7 @@ export default function App() {
       );
       console.log(res.data);
       setTodos([...todos, {id, name, description}]);
+      reset()
     } catch (error) {
       console.log(error);
     }
